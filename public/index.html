@@ -48,9 +48,31 @@
        //Action
        return {
          type: 'CLICKED_BUTTON',
-         payload: 'PINK'
+         payload: 'pink'
        }
      }
+
+     //Reducers
+     const initialState = {
+       color: 'yellow'
+     }
+
+     const viewReducer = (state = {}, action) => {
+        switch (action.type) {
+          case 'CLICKED_BUTTON':
+            let newState = Object.assign({}, state, {
+              color: action.payload
+            })
+            return newState
+            break;
+        
+          default:
+            return state
+            break;
+        }
+     }
+
+     viewReducer(initialState, CLICKED_BUTTON())
     </script>
   </body>
 </html>
