@@ -41,6 +41,8 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <script>
+      const { createStore, combineReducers } = Redux;
+      
      // console.log(Redux)
 
      //Action Creators
@@ -72,7 +74,11 @@
         }
      }
 
-     viewReducer(initialState, CLICKED_BUTTON())
+     const allReducers = combineReducers({
+       viewReducer: viewReducer
+     })
+
+     const store = createStore(allReducers);
     </script>
   </body>
 </html>
