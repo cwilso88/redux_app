@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <button>
+      <button id="button">
         Change Background
       </button>
     </div>

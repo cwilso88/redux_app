@@ -26,10 +26,17 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React Redux App</title>
+    <style>
+      #button {
+        margin: 100px;
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
+    <button id="button">Change Background</button>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -46,11 +53,11 @@
      // console.log(Redux)
 
      //Action Creators
-     const CLICKED_BUTTON = () => {
+     const CLICKED_BUTTON = (color) => {
        //Action
        return {
          type: 'CLICKED_BUTTON',
-         payload: 'pink'
+         payload: color
        }
      }
 
@@ -59,7 +66,7 @@
        color: 'yellow'
      }
 
-     const viewReducer = (state = {}, action) => {
+     const viewReducer = (state = initialState, action) => {
         switch (action.type) {
           case 'CLICKED_BUTTON':
             let newState = Object.assign({}, state, {
@@ -79,6 +86,25 @@
      })
 
      const store = createStore(allReducers);
+
+     //store.dispatch(CLICKED_BUTTON())
+
+     //console.log(store.getState())
+
+     const button = document.getElementById('button');
+     button.addEventListener('click', () => {
+       store.dispatch(CLICKED_BUTTON('Pink'))
+     })
+
+     const render = () => {
+       const appState = store.getState().viewReducer;
+       console.log('======================================State')
+       console.log(appState)
+       document.body.style.backgroundColor = appState.color;
+     }
+
+     render()
+
     </script>
   </body>
 </html>
