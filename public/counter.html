@@ -27,86 +27,51 @@
     -->
     <title>React Redux App</title>
     <style>
-      #button {
-        margin: 100px;
+      *{box-sizing: boarder-box;}
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .counter {
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        width: 500px;
+        border: 2px solid;
+        font-size: 4rem;
+        text-align: center;
+      }
+      .counter #digitalNumber {
+        width: 100%;
+      }
+      .counter .buttons {
+        width: 100%;
+        display: flex;
+      }
+      .counter .buttons .button {
+        width: 50%;
+        background-color: blueviolet;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
       }
     </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-
-    <button id="button">Change Background</button>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <div class="counter">
+        <div id="digitalNumber">0</div>
+      <div class="buttons">
+        <div id="increment" class="button">+</div>
+        <div id="decrement" class="button">-</div>
+      </div>
+    </div>
     <script>
       const { createStore, combineReducers } = Redux;
       
-     // console.log(Redux)
-
-     //Action Creators
-     const CLICKED_BUTTON = (color) => {
-       //Action
-       return {
-         type: 'CLICKED_BUTTON',
-         payload: color
-       }
-     }
-
-     //Reducers
-     const initialState = {
-       color: 'yellow'
-     }
-
-     const viewReducer = (state = initialState, action) => {
-        switch (action.type) {
-          case 'CLICKED_BUTTON':
-            let newState = Object.assign({}, state, {
-              color: action.payload
-            })
-            return newState
-            break;
-        
-          default:
-            return state
-            break;
-        }
-     }
-
-     const allReducers = combineReducers({
-       viewReducer: viewReducer
-     })
-
-     const store = createStore(allReducers);
-
-     //store.dispatch(CLICKED_BUTTON())
-
-     //console.log(store.getState())
-
-     const button = document.getElementById('button');
-     button.addEventListener('click', () => {
-       store.dispatch(CLICKED_BUTTON('Pink'))
-     })
-
-     const render = () => {
-       const appState = store.getState().viewReducer;
-       console.log('======================================State')
-       console.log(appState)
-       document.body.style.backgroundColor = appState.color;
-     }
-
-     render()
-
-     store.subscribe(render);
-
+     
     </script>
   </body>
 </html>
