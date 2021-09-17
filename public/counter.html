@@ -94,13 +94,17 @@
       }
 
       // REDUCERS
+      let newState
+
       const counterReducer = (state = 0, action) => {
         switch (action.type) {
           case 'CLICKED_INCREMENT':
-                let newState = state + 1
+                newState = state + 1
+                return newState
             break;
           case 'CLICKED_DECREMENT':
-                let newState = state - 1
+                newState = state - 1
+                return newState
             break;
           default:
             return state
