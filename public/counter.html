@@ -103,9 +103,14 @@
                 let newState = state - 1
             break;
           default:
+            return state
             break;
         }
       }
+
+      const allReducers = combineReducers({
+        counderReducer
+      })
     </script>
   </body>
 </html>
