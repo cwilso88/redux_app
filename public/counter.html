@@ -79,7 +79,18 @@
     <script>
       const { createStore, combineReducers } = Redux;
       
-     
+      const CLICKED_INCREMENT = () => {
+        return {
+          type: 'CLICKED_INCREMENT',
+          payload: 'Plus'
+        }
+      }
+      const CLICKED_DECREMENT = () => {
+        return {
+          type: 'CLICKED_DECREMENT',
+          payload: 'MINUS'
+        }
+      }
     </script>
   </body>
 </html>
