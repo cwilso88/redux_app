@@ -79,6 +79,7 @@
     <script>
       const { createStore, combineReducers } = Redux;
       
+      // ACTION CREATORS
       const CLICKED_INCREMENT = () => {
         return {
           type: 'CLICKED_INCREMENT',
@@ -89,6 +90,20 @@
         return {
           type: 'CLICKED_DECREMENT',
           payload: 'MINUS'
+        }
+      }
+
+      // REDUCERS
+      const counterReducer = (state = 0, action) => {
+        switch (action.type) {
+          case 'CLICKED_INCREMENT':
+                let newState = state + 1
+            break;
+          case 'CLICKED_DECREMENT':
+                let newState = state - 1
+            break;
+          default:
+            break;
         }
       }
     </script>
