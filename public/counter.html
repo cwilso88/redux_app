@@ -117,6 +117,16 @@
       })
 
       const store = createStore(allReducers)
+
+      const decBtn = document.getElementById("decrement");
+      const incBtn = document.getElementById("increment");
+
+      decBtn.addEventListener('click', () => {
+          store.dispatch(CLICKED_DECREMENT())
+      }, false)
+      incBtn.addEventListener('click', () => {
+          store.dispatch(CLICKED_INCREMENT())
+      }, false)
     </script>
   </body>
 </html>
