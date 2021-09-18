@@ -99,11 +99,11 @@
       const counterReducer = (state = 0, action) => {
         switch (action.type) {
           case 'CLICKED_INCREMENT':
-                newState = state + 1
+                newState = state + 5
                 return newState
             break;
           case 'CLICKED_DECREMENT':
-                newState = state - 1
+                newState = state - 5
                 return newState
             break;
           default:
@@ -113,7 +113,7 @@
       }
 
       const allReducers = combineReducers({
-        counderReducer
+        counterReducer
       })
 
       const store = createStore(allReducers)
@@ -127,6 +127,16 @@
       incBtn.addEventListener('click', () => {
           store.dispatch(CLICKED_INCREMENT())
       }, false)
+
+      const render = () => {
+        const appState = store.getState().counterReducer
+        document.getElementById('digitalNumber')
+        .innerHTML = appState
+      }
+
+      render()
+
+      store.subscribe(render)
     </script>
   </body>
 </html>
